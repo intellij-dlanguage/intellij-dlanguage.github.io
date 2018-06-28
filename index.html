@@ -106,10 +106,10 @@
           <h2><a id="installation" class="anchor" href="#installation" aria-hidden="true">Installation</a></h2>
             
           <p><a href="https://www.jetbrains.com/idea/">Download</a> and install IntelliJ Community Edition (Free) or Ultimate (Paid)
-          From IntelliJ go to Preferences &gt; Plugins &gt; Browse Repositories and search For "D Language" - you will see 2 plugins - Choose the <em>DLanguage</em> one and click install and then click restart intellij</p>
+          From IntelliJ go to Settings &gt; Plugins &gt; Browse Repositories and search For "D Language" - you will see 2 plugins - Choose the <em>DLanguage</em> one and click install and then click restart intellij</p>
 
           <p>You can also download the plugin jar to your local disk here: <a href="https://plugins.jetbrains.com/plugin/8115?pr=">Jetbrains plugin repository</a> and then in intelliJ
-          go to Preferences &gt; Plugins &gt; Install plugin from disk and choose the jar you downloaded</p>
+          go to Settings &gt; Plugins &gt; Install plugin from disk and choose the jar you downloaded</p>
 
           <img src="https://github.com/intellij-dlanguage/intellij-dlanguage/raw/master/.README/install.png" class="img-fluid rounded mx-auto d-block" alt="installation"/>
 
@@ -130,33 +130,30 @@
             <li>When you select this to create a new project with dub - if dub is on your path it will attempt to use dub init to create a new dub project for you. If dub is not on your path it will create a source directory and you will have to create your sdl/json dub file manually or rename/delete the source folder and then use dub init to recreate it</li>
             <li>Or you can open an existing dub project by doing File -&gt; Open </li>
             <li>Once a dub project is loaded there is right click menu option to run with dub, or you can use the run config - run with Dub</li>
-            <li>Before running go and configure the DTools in Preferences -&gt; Other Settings -&gt; D Tools</li>
+            <li>Before running go and configure the DTools in Settings -&gt; Languages &amp; Frameworks -&gt; D Tools</li>
           </ul>
 
           <h4><a id="configure-dtools" class="anchor" href="#configure-dtools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure DTools</h4>
 
-          <p>The best option is to do and get the following tools and build them according to their github page instructions:</p>
+          <p>The best option is to do and get the following tools:</p>
 
           <ul>
-            <li><a href="http://code.dlang.org/download">dub</a></li>
-            <li><a href="https://github.com/Hackerpilot/DCD">DCD</a></li>
-            <li><a href="https://github.com/Hackerpilot/Dscanner">DScanner</a></li>
-            <li><a href="https://github.com/Hackerpilot/dfmt">Dfmt</a></li>
+            <li><a href="https://github.com/dlang-community/DCD/releases">DCD</a></li>
+            <li><a href="https://github.com/dlang-community/D-Scanner/releases">DScanner</a></li>
+            <li><a href="https://github.com/dlang-community/dfmt/releases">Dfmt</a></li>
           </ul>
 
-          <p>If you put these tools on your path you can go to Preferences -&gt; Other Settings -&gt; D Tools and just click autofind on each of the tools and it will find them. Otherwise you will need to select the correct path to the tool for each one.</p>
-
-          <p>There is a nice blog post about setting up the tools at: <a href="http://www.samael.me.uk/2015/12/d-plugin-for-intellij-idea.html">www.samael.me.uk</a></p>
+          <p>If you put these tools on your path you can go to Settings -&gt; Languages &amp; Frameworks -&gt; D Tools and just click "Auto Find" on each of the tools and it will find them. Otherwise you will need to select the correct path to the tool for each one.</p>
 
           <h4><a id="configuring-dcd" class="anchor" href="#configuring-dcd" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring DCD</h4>
 
-          <p>To configure DCD in the dcd-server add a comma separated list of paths that point to your libraries that you want to include in autocompletion.</p>
+          <p>On MacOS and Windows the path to Phobos and DRuntime is inferred by the D SDK path. Dub dependencies can be passed to DCD by pressing the menu item "Tools -> Process D Libraries". Additional libraries can b passed to DCD by providing a comma separated list of paths in the dcd-server flags field.</p>
 
-          <p>For example:</p>
+          <p>On Linux you have to pass Phobos and DRuntime paths to DCD:</p>
 
-          <pre><code>/Library/D/dmd/src/phobos,/Library/D/dmd/src/druntime/import,/Users/hendriki/.dub/packages/rainbow-master/src</code></pre>
+          <pre><code>/Library/D/dmd/src/phobos,/Library/D/dmd/src/druntime/import,/Users/hendriki/projects/rainbow-master/src</code></pre>
 
-          <p>This will add the phobos and druntime/import as well as my rainbow dub project. You can add other dub packages by adding the path to them. I should be able to autoconfigure this stuff in a future release.</p>
+          <p>This will add the phobos and druntime/import as well as add the p rainbow project.</p>
 
           <h4><a id="dcd-server-restart-action" class="anchor" href="#dcd-server-restart-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>DCD Server Restart Action</h4>
 
@@ -172,11 +169,22 @@
 
           <h4><a id="syntax-highlighting" class="anchor" href="#syntax-highlighting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax Highlighting</h4>
 
-          <p>Go to Preferences -&gt; Editor -&gt; Colors and Fonts -&gt; D File</p>
+          <p>Go to Settings -&gt; Editor -&gt; Colors and Fonts -&gt; D File</p>
 
           <p>You can customize the syntax highlighting colours here. Save as a new theme - and then untick the inherit from checkbox and this will allow you to choose a colour for each item.
           Only the native items will show as changing in the code example. From function definition downwards the options are related to annotated highlighting which is based on the grammar and not the lexer. So these don't show as chanigng the code example but they do wok.
           I created one similar to the sublime dark theme by using Darcula theme and customizing the colours here.</p>
+
+          <h4><a id="debugging" class="anchor" href="#debugging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging</h4>
+
+          <p>On MacOS and Linux debugging is possible using GDB. Enter in Settings -&gt; Languages &amp; Frameworks -&gt; D Tools -&gt; GDB the path to the gdb executable.</p>
+
+          <p>On Windows debugging of executables is possible using Mago-Mi. The latest version of Mago-Mi you can find on <a href="https://ci.appveyor.com/project/rainers/mago/build/artifacts">AppVeyor</a>. To debug x86_64 applications you need also MagoRemote.exe and a regedit key "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\MagoDebugger" with a value "Remote_x64" containing path to "MagoRemote.exe" e.g. "C:\Program Files (x86)\VisualD\Mago\MagoRemote.exe".</p>
+
+          <p>In addition it is also possible to use Windows Subsystem for Linux to compile from Windows Linux binaries and debug them using gdb which also runs on WSL. Due to a bug in WSL you need Windows 10 1803 or later.
+          Create a file called dubwsl.bat with content:<br>@ECHO OFF<br>wsl dub<br><br>and a file gdbwsl.bat with content:<br>@ECHO OFF<br>wsl gdb<br><br>Set as dub path the filepath to dubwsl.bat and as gdb path the path to gdbwsl.bat.
+          On your WSL linux file system DMD and GDB needs to be installed.</p>
+          
         </div>
       </div>
 
