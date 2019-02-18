@@ -185,6 +185,19 @@
           Create a file called dubwsl.bat with content:<br>@ECHO OFF<br>wsl dub<br><br>and a file gdbwsl.bat with content:<br>@ECHO OFF<br>wsl gdb<br><br>Set as dub path the filepath to dubwsl.bat and as gdb path the path to gdbwsl.bat.
           On your WSL linux file system DMD and GDB needs to be installed.</p>
           
+          <h4><a id="language_server_protocol" class="anchor" href="#language_server_protocol" aria-hidden="true"><span class="octicon octicon-link"></span></a>Language Server Protocol</h4>
+          <p>The functionality of IntelliJ D plugin can be enhanced with language servers for D. For functionality Dls provides have a look here <a href="https://github.com/d-language-server/dls">Dls</a><br>
+          Install plugin "LSP Support" from IntelliJ marketplace.</p>
+
+          <p>Install Dls using this command<br>
+          dub fetch dls<br>
+          dub run dls:bootstrap<br>
+          <p>The second command will output the path to the executable you have to set in settings of plugin "LSP Support".<br>
+          In settings "Languages & Frameworks -> Language Server Protocol -> Server Definitions" add an entry
+          "Executable" with extension ".d" and the path which you got from Dls.<br>
+          <br>
+          In settings "Languages & Frameworks -> Language Server Protocol -> Timeouts" set "Init" value to "60000".
+          </p>
         </div>
       </div>
 
