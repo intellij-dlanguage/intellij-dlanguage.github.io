@@ -105,13 +105,13 @@
         <div class="col-12">
           <h2><a id="installation" class="anchor" href="#installation" aria-hidden="true">Installation</a></h2>
             
-          <p><a href="https://www.jetbrains.com/idea/">Download</a> and install IntelliJ Community Edition (Free) or Ultimate (Paid)
+          <p><a href="https://www.jetbrains.com/idea/">Download</a> and install IntelliJ IDEA (either Community Edition or Ultimate).
           From IntelliJ go to Settings &gt; Plugins &gt; Browse Repositories and search For "D Language" - you will see 2 plugins - Choose the <em>DLanguage</em> one and click install and then click restart intellij</p>
 
-          <p>You can also download the plugin jar to your local disk here: <a href="https://plugins.jetbrains.com/plugin/8115?pr=">Jetbrains plugin repository</a> and then in intelliJ
+          <p>You can also download the plugin jar to your local disk here: <a href="https://plugins.jetbrains.com/plugin/8115">Jetbrains plugin repository</a> and then in intelliJ
           go to Settings &gt; Plugins &gt; Install plugin from disk and choose the jar you downloaded</p>
 
-          <img src="https://github.com/intellij-dlanguage/intellij-dlanguage/raw/master/.README/install.png" class="img-fluid rounded mx-auto d-block" alt="installation"/>
+          <img src="images/intellij-dlanguage-install-plugin.png" class="img-fluid rounded mx-auto d-block" alt="installation"/>
 
           <h2><a id="quick-usage" class="anchor" href="#quick-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Usage</h2>
 
@@ -135,21 +135,27 @@
 
           <h4><a id="configure-dtools" class="anchor" href="#configure-dtools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure DTools</h4>
 
-          <p>The best option is to do and get the following tools:</p>
+          <p>For the best experience makesure to at least configure dub and dcd:</p>
 
           <ul>
+            <li><a href="https://dub.pm/">DUB</a></li>
             <li><a href="https://github.com/dlang-community/DCD/releases">DCD</a></li>
             <li><a href="https://github.com/dlang-community/D-Scanner/releases">DScanner</a></li>
             <li><a href="https://github.com/dlang-community/dfmt/releases">Dfmt</a></li>
+            <li><a href="https://www.sourceware.org/gdb/">GDB</a></li>
           </ul>
 
           <p>If you put these tools on your path you can go to Settings -&gt; Languages &amp; Frameworks -&gt; D Tools and just click "Auto Find" on each of the tools and it will find them. Otherwise you will need to select the correct path to the tool for each one.</p>
 
+          <img src="images/intellij-dlanguage-setup-dub.png" class="img-fluid rounded mx-auto d-block" alt="installation"/>
+
           <h4><a id="configuring-dcd" class="anchor" href="#configuring-dcd" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring DCD</h4>
 
-          <p>On MacOS and Windows the path to Phobos and DRuntime is inferred by the D SDK path. Dub dependencies can be passed to DCD by pressing the menu item "Tools -> Process D Libraries". Additional libraries can b passed to DCD by providing a comma separated list of paths in the dcd-server flags field.</p>
+          <p>On Windows, MacOS and Linux the paths to Phobos and DRuntime should be found automatically when you configure the dmd compiler. Dub dependencies can be passed to DCD by pressing the menu item "Tools -> Process D Libraries". Additional libraries can b passed to DCD by providing a comma separated list of paths in the dcd-server flags field.</p>
 
-          <p>On Linux you have to pass Phobos and DRuntime paths to DCD:</p>
+          <img src="images/intellij-dlanguage-setup-dmd-b.png" class="img-fluid rounded mx-auto d-block" alt="installation"/>
+
+          <p>If the paths are not detected then you can manually pass them to DCD:</p>
 
           <pre><code>/Library/D/dmd/src/phobos,/Library/D/dmd/src/druntime/import,/Users/hendriki/projects/rainbow-master/src</code></pre>
 
